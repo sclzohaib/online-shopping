@@ -5,7 +5,9 @@ import java.util.List;
 
 import org.burkitech.shoppingbackend.dao.CategoryDAO;
 import org.burkitech.shoppingbackend.dto.Category;
+import org.springframework.stereotype.Repository;
 
+@Repository("categoryDAO")
 public class CategoryDAOImpl implements CategoryDAO{
 
 	static List<Category> categoryList = new ArrayList<>();
@@ -25,7 +27,7 @@ public class CategoryDAOImpl implements CategoryDAO{
 		categoryList.add(category);
 		
 		category = new Category();
-		category.setId(1);
+		category.setId(3);
 		category.setName("Mobile");
 		category.setDescription("Description for mobile");
 		category.setImageURL("slider3.png");
@@ -35,6 +37,13 @@ public class CategoryDAOImpl implements CategoryDAO{
 	@Override
 	public List<Category> categoryList() {		
 		return categoryList;
+	}
+	@Override
+	public Category get(int id) {
+		for(Category category: categoryList){
+			if(category.getId()==id) return category;
+			}
+		return null;
 	}
 
 }
