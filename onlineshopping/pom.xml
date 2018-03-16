@@ -11,10 +11,14 @@
 	<properties>
 		<javaee.version>8.0</javaee.version>
 		<spring.version>4.3.6.RELEASE</spring.version>
+		
 	</properties>
 
 	<dependencies>
-		<dependency>
+	
+	<!-- Backend Project Integration with Frontend Project -->
+	
+	<dependency>
 			<groupId>org.burkitech</groupId>
 			<artifactId>shoppingbackend</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
@@ -39,20 +43,19 @@
 			<scope>test</scope>
 		</dependency>
 
-		<!-- Spring version -->
+		<!-- Spring Web MVC version -->
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-webmvc</artifactId>
 			<version>${spring.version}</version>
 		</dependency>
-
+		
 		<!-- JSTL -->
 		<dependency>
 			<groupId>jstl</groupId>
 			<artifactId>jstl</artifactId>
 			<version>1.2</version>
 		</dependency>
-
 
 	</dependencies>
 	<build>
