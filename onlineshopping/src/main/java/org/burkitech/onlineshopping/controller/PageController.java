@@ -36,6 +36,7 @@ public ModelAndView about() {
 	System.out.println("wahaj");
 	mv.addObject("userClickAbout", true);
 	System.out.println("Zohaib");
+	System.out.println("Hello");
 	return mv;
 	
 }
