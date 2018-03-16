@@ -19,7 +19,7 @@ public ModelAndView index() {
 	
 	ModelAndView mv = new ModelAndView("page");
 	mv.addObject("title", "Home");
-	
+	System.out.println("wahaj");
 	//categories fetching
 	mv.addObject("categories",categoryDAO.categoryList());
 	
