@@ -14,11 +14,11 @@ import org.springframework.orm.hibernate5.LocalSessionFactoryBuilder;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 @Configuration
-@ComponentScan(basePackages = { "org.burkitech.shoppingbackend.dto" })
+@ComponentScan(basePackages = {"org.burkitech.shoppingbackend.dto"})
 @EnableTransactionManagement
 public class HibernateConfig {
 	
-	private final static String DATABASE_URL = "dbc:oracle:thin:@localhost:1521:xe";
+	private final static String DATABASE_URL = "jdbc:oracle:thin:192.168.100.11:1521:xe";
 	private final static String DATABASE_DRIVER = "oracle.jdbc.driver.OracleDriver";
 	private final static String DATABASE_USERNAME = "SPRINGOSS";
 	private final static String DATABASE_PASSWORD = "oracle";
@@ -26,7 +26,7 @@ public class HibernateConfig {
 
 	// Data Source bean will be available
 	@Bean
-	private DataSource getDataSource() {
+	public DataSource getDataSource() {
 		// Providing Database connection Information
 		BasicDataSource dataSource = new BasicDataSource();
 		dataSource.setDriverClassName(DATABASE_DRIVER);
@@ -38,14 +38,14 @@ public class HibernateConfig {
 
 	// sessionfactory bean will be avaialble
 	@Bean
-	private SessionFactory getSessionFactory(DataSource dataSource) {
+	public SessionFactory getSessionFactory(DataSource dataSource) {
 		LocalSessionFactoryBuilder builder = new LocalSessionFactoryBuilder(dataSource);
 		builder.addProperties(getHibernateProperties());
 		return builder.buildSessionFactory();
 	}
 
 	// all the hibernate properties will be return in this method
-	private Properties getHibernateProperties() {
+	public Properties getHibernateProperties() {
 		Properties properties = new Properties();
 		properties.put("hibernate.dialect", DATABASE_DIALECT);
 		properties.put("hibernate.show_sql", true);

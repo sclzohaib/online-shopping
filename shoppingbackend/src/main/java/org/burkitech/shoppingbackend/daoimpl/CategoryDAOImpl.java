@@ -6,11 +6,13 @@ import java.util.List;
 import org.burkitech.shoppingbackend.dao.CategoryDAO;
 import org.burkitech.shoppingbackend.dto.Category;
 import org.hibernate.SessionFactory;
+import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 @Repository("categoryDAO")
+@Transactional
 public class CategoryDAOImpl implements CategoryDAO {
 
 	@Autowired
@@ -43,20 +45,20 @@ public class CategoryDAOImpl implements CategoryDAO {
 
 	@Override
 	public List<Category> categoryList() {
-		return categoryList;
+		//use entity name
+		String selectActiveCategory="FROM Category WHERE active = :active";
+		Query query=sessionFactory.getCurrentSession().createQuery(selectActiveCategory);
+		query.setParameter("active",'Y');
+		return query.getResultList();
 	}
-
+	
+//get single category based on id
 	@Override
 	public Category get(int id) {
-		for (Category category : categoryList) {
-			if (category.getId() == id)
-				return category;
-		}
-		return null;
+		 return sessionFactory.getCurrentSession().get(Category.class, Integer.valueOf(id));
 	}
 
 	@Override
-	@Transactional
 	public boolean add(Category category) {
 		try {
 			sessionFactory.getCurrentSession().persist(category);
@@ -68,6 +70,32 @@ public class CategoryDAOImpl implements CategoryDAO {
 			return false;
 		}
 
+	}
+
+	@Override
+	public boolean update(Category category) {
+		try {
+			sessionFactory.getCurrentSession().update(category);
+			return true;
+		}
+
+		catch (Exception ex) {
+			ex.printStackTrace();
+			return false;
+		}
+	}
+
+	@Override
+	public boolean delete(Category category) {
+		try {
+			sessionFactory.getCurrentSession().delete(category);
+			return true;
+		}
+
+		catch (Exception ex) {
+			ex.printStackTrace();
+			return false;
+		}
 	}
 
 }
