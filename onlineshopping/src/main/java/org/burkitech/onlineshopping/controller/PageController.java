@@ -34,6 +34,7 @@ public ModelAndView about() {
 	ModelAndView mv = new ModelAndView("page");
 	mv.addObject("title", "About Us");
 	mv.addObject("userClickAbout", true);
+	System.out.println("Zohaib");
 	return mv;
 	
 }
