@@ -1,4 +1,4 @@
-package org.burkitech.shoppingbackend.config;
+ package org.burkitech.shoppingbackend.config;
 
 import java.util.Properties;
 
