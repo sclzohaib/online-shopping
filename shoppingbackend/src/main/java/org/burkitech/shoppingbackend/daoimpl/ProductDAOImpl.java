@@ -71,20 +71,32 @@ public class ProductDAOImpl implements ProductDAO{
 
 	@Override
 	public List<Product> listActiveProducts() {
-		// TODO Auto-generated method stub
-		return null;
+		String selectActiveProducts="FROM Product WHERE active=:active";
+		return sessionFactory.getCurrentSession().
+		createQuery(selectActiveProducts,Product.class)
+		.setParameter("active",true)
+		.getResultList();
 	}
 
 	@Override
 	public List<Product> listActiveProductsByCategory(int categoryId) {
-		// TODO Auto-generated method stub
-		return null;
+		String selectActiveProductsByCategory="FROM Product WHERE active=:active AND categoryID=:categoryID";
+		return sessionFactory.getCurrentSession().
+		createQuery(selectActiveProductsByCategory,Product.class)
+		.setParameter("active",true)
+		.setParameter("categoryId", categoryId)
+		.getResultList();
 	}
 
 	@Override
 	public List<Product> getLatestActiveProducts(int count) {
-		// TODO Auto-generated method stub
-		return null;
+		String selectLatestProducts="FROM Product WHERE active=:active order by id";
+		return sessionFactory.getCurrentSession().
+		createQuery(selectLatestProducts,Product.class)
+		.setParameter("active",true)
+		.setFirstResult(0)
+		.setMaxResults(count)
+		.getResultList();
 	}
 
 }
