@@ -12,7 +12,6 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 @Repository("categoryDAO")
-@Transactional
 public class CategoryDAOImpl implements CategoryDAO {
 
 	@Autowired
@@ -21,7 +20,7 @@ public class CategoryDAOImpl implements CategoryDAO {
 	static List<Category> categoryList = new ArrayList<>();
 	static {
 		Category category = new Category();
-		category.setId(1);
+		//category.setId(1);
 		category.setName("Food");
 		category.setDescription("Description for food");
 		category.setImageURL("slider1.png");
@@ -45,20 +44,21 @@ public class CategoryDAOImpl implements CategoryDAO {
 
 	@Override
 	public List<Category> categoryList() {
-		//use entity name
-		String selectActiveCategory="FROM Category WHERE active = :active";
-		Query query=sessionFactory.getCurrentSession().createQuery(selectActiveCategory);
-		query.setParameter("active",'Y');
+		// use entity name
+		String selectActiveCategory = "FROM Category WHERE active = :active";
+		Query query = sessionFactory.getCurrentSession().createQuery(selectActiveCategory);
+		query.setParameter("active", 'Y');
 		return query.getResultList();
 	}
-	
-//get single category based on id
+
+	// get single category based on id
 	@Override
 	public Category get(int id) {
-		 return sessionFactory.getCurrentSession().get(Category.class, Integer.valueOf(id));
+		return sessionFactory.getCurrentSession().get(Category.class, Integer.valueOf(id));
 	}
 
 	@Override
+	@Transactional
 	public boolean add(Category category) {
 		try {
 			sessionFactory.getCurrentSession().persist(category);

@@ -14,10 +14,9 @@ import org.springframework.orm.hibernate5.LocalSessionFactoryBuilder;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 @Configuration
-@ComponentScan(basePackages = {"org.burkitech.shoppingbackend.dto"})
+@ComponentScan(basePackages = { "org.burkitech.shoppingbackend.dto" })
 @EnableTransactionManagement
 public class HibernateConfig {
-	
 	private final static String DATABASE_URL = "jdbc:oracle:thin:@192.168.100.11:1521:xe";
 	private final static String DATABASE_DRIVER = "oracle.jdbc.driver.OracleDriver";
 	private final static String DATABASE_USERNAME = "SPRINGOSS";
@@ -46,18 +45,18 @@ public class HibernateConfig {
 	}
 
 	// all the hibernate properties will be return in this method
-	public Properties getHibernateProperties() {
+	private Properties getHibernateProperties() {
 		Properties properties = new Properties();
 		properties.put("hibernate.dialect", DATABASE_DIALECT);
 		properties.put("hibernate.show_sql", true);
 		properties.put("hibernate.format_sql", true);
 		return properties;
 	}
-	
+
 	@Bean
-	public HibernateTransactionManager getTransactionManager(SessionFactory sessionFactory){
-		HibernateTransactionManager transactionManager=new HibernateTransactionManager(sessionFactory);		
+	public HibernateTransactionManager getTransactionManager(SessionFactory sessionFactory) {
+		HibernateTransactionManager transactionManager = new HibernateTransactionManager(sessionFactory);
 		return transactionManager;
-		}
+	}
 
 }
