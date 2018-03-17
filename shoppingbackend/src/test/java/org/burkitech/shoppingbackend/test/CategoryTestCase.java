@@ -25,9 +25,9 @@ public class CategoryTestCase {
 	@Test
 	public void testAddCategory(){
 		Category category=new Category();
-		category.setName("Food");
-		category.setDescription("Description for food");
-		category.setImageURL("slider1.png");
+		category.setName("Mobile");
+		category.setDescription("Description for mobile");
+		category.setImageURL("slider3.png");
 	assertEquals("Successfully fetched",true,categoryDAO.add(category));
 	}
 	

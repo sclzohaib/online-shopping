@@ -1,4 +1,4 @@
-package org.burkitech.shoppingbackend.config;
+ package org.burkitech.shoppingbackend.config;
 
 import java.util.Properties;
 
@@ -18,11 +18,11 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @EnableTransactionManagement
 public class HibernateConfig {
 	
-	private final static String DATABASE_URL = "jdbc:oracle:thin:192.168.100.11:1521:xe";
+	private final static String DATABASE_URL = "jdbc:oracle:thin:@192.168.100.11:1521:xe";
 	private final static String DATABASE_DRIVER = "oracle.jdbc.driver.OracleDriver";
 	private final static String DATABASE_USERNAME = "SPRINGOSS";
 	private final static String DATABASE_PASSWORD = "oracle";
-	private final static String DATABASE_DIALECT = "org.hibernate.dialect.Oracle11gDialect";
+	private final static String DATABASE_DIALECT = "org.hibernate.dialect.Oracle10gDialect";
 
 	// Data Source bean will be available
 	@Bean
@@ -41,6 +41,7 @@ public class HibernateConfig {
 	public SessionFactory getSessionFactory(DataSource dataSource) {
 		LocalSessionFactoryBuilder builder = new LocalSessionFactoryBuilder(dataSource);
 		builder.addProperties(getHibernateProperties());
+		builder.scanPackages("org.burkitech.shoppingbackend.dto");
 		return builder.buildSessionFactory();
 	}
 
