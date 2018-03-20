@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Controller
 @RequestMapping("/json/data")
 public class JsonDataController {
+	
 	@Autowired
 	private ProductDAO productDAO;
 

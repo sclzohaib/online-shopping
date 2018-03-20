@@ -38,7 +38,7 @@
 			<img class="rounded-circle img-fluid d-block mx-auto"
 					src="${images}/Timage3.v2.jpg" alt="teamimage3"></a>
 			<h3>
-				Steve Jobs<br> <small>Industrial Designer</small>
+				Wahaj Raza<br> <small>Senior Developer</small>
 			</h3>
 			<p>What does this team member to? Keep it short! This is also a
 				great spot for social links!</p>

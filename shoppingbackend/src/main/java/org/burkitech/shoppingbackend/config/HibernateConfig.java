@@ -1,4 +1,4 @@
- package org.burkitech.shoppingbackend.config;
+package org.burkitech.shoppingbackend.config;
 
 import java.util.Properties;
 
@@ -36,7 +36,9 @@ public class HibernateConfig {
 	}
 
 	// sessionfactory bean will be avaialble
+
 	@Bean
+
 	public SessionFactory getSessionFactory(DataSource dataSource) {
 		LocalSessionFactoryBuilder builder = new LocalSessionFactoryBuilder(dataSource);
 		builder.addProperties(getHibernateProperties());

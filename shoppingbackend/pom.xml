@@ -33,7 +33,6 @@
 		</dependency>
 
 		<!-- Spring ORM Dependency -->
-
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-orm</artifactId>
@@ -56,7 +55,6 @@
 			<version>${hibernate.version}</version>
 		</dependency>
 
-
 		<!-- Database Connection Pooling -->
 
 		<dependency>
@@ -64,18 +62,47 @@
 			<artifactId>commons-dbcp2</artifactId>
 			<version>2.1.1</version>
 		</dependency>
+
 		<!-- Jackson Dependencies -->
 		<dependency>
 			<groupId>com.fasterxml.jackson.core</groupId>
 			<artifactId>jackson-databind</artifactId>
 			<version>${jackson.version}</version>
 		</dependency>
-
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-core</artifactId>
+			<version>${jackson.version}</version>
+		</dependency>
 		<dependency>
 			<groupId>com.fasterxml.jackson.core</groupId>
 			<artifactId>jackson-annotations</artifactId>
 			<version>${jackson.version}</version>
 		</dependency>
+
+		<dependency>
+			<groupId>org.jboss.logging</groupId>
+			<artifactId>jboss-logging</artifactId>
+			<version>3.3.0.Final</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/dom4j/dom4j -->
+		<dependency>
+			<groupId>dom4j</groupId>
+			<artifactId>dom4j</artifactId>
+			<version>1.6.1</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/com.fasterxml/classmate -->
+		<dependency>
+			<groupId>com.fasterxml</groupId>
+			<artifactId>classmate</artifactId>
+			<version>0.5.4</version>
+		</dependency>
+		<dependency>
+			<groupId>javassist</groupId>
+			<artifactId>javassist</artifactId>
+			<version>3.12.1.GA</version>
+		</dependency>
+
 	</dependencies>
 	<build>
 		<plugins>

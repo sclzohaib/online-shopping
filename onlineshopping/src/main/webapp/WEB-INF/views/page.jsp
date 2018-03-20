@@ -28,8 +28,10 @@
 <link href="${css}/bootstrap.minn.css" rel="stylesheet">
 
 <!-- Bootstrap simplex theme CSS -->
-<!--<link href="${css}/pulse-theme.css" rel="stylesheet">-->
+<!--  <link href="${css}/pulse-theme.css" rel="stylesheet"/>-->
 
+<!-- Bootstrap data CSS 
+<link href="${css}/dataTables.bootstrap.css" rel="stylesheet">-->
 
 <!-- Custom styles for this template -->
 <link href="${css}/myapp.css" rel="stylesheet">
@@ -69,10 +71,15 @@
 
 	<!-- Bootstrap core JavaScript -->
 	<script src="${js}/jquery.js"></script>
+	
+	
 	<script src="${js}/bootstrap.bundle.min.js"></script>
-
+	
+	<!-- data tables -->
+	<script src="${js}/jquery.dataTables.js"></script>
+	<!-- Bootstrap
+	<script src="${js}/dataTables.bootstrap.js"></script>-->
 	<!-- self coded javascript -->
-
 	<script src="${js}/myapp.js"></script>
 	
 	</div>
