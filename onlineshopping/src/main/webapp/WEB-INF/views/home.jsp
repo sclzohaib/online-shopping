@@ -19,7 +19,7 @@
 					</ol>
 					<div class="carousel-inner" role="listbox">
 						<div class="carousel-item active">
-							<img class="d-block img-fluid" src="${images}/slider1.png"
+							<img class="d-block img-fluid" src="${images}/slider1.jpg"
 								alt="First slide">
 						</div>
 						<div class="carousel-item">

@@ -9,109 +9,70 @@
 
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
 <meta charset="utf-8">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="description" content="">
 <meta name="author" content="">
-
 <title>Online Shopping - ${title}</title>
-
-<script>
-	window.menu = '${title}';
-	
-	window.contextRoot = '${contextRoot}'
-</script>
 
 <!-- Bootstrap core CSS -->
 <link href="${css}/bootstrap.minn.css" rel="stylesheet">
 <link href="${css}/bootstrap.min.css" rel="stylesheet">
-
-
 <!-- Bootstrap simplex theme CSS -->
 <!--  <link href="${css}/pulse-theme.css" rel="stylesheet"/>-->
-
 <!-- Bootstrap data CSS -->
 <link href="${css}/jquery.dataTables.min.css" rel="stylesheet">
-
 <!-- Bootstrap data CSS -->
 <link href="${css}/dataTables.bootstrap.css" rel="stylesheet">
-
 <link href="${css}/dataTables.bootstrap.min.css" rel="stylesheet">
 <!-- <link href="${css}/dataTables.jqueryui.min.css" rel="stylesheet"> -->
-
 <!-- Custom styles for this template -->
 <link href="${css}/myapp.css" rel="stylesheet">
 <link href="${css}/round-about.css" rel="stylesheet">
 </head>
 
 <body>
- <div class="wrapper">
-	<!-- Navigation -->
-	<%@include file="./shared/navbar.jsp"%>
-		
-	<div class="content">
+	<div class="wrapper">
+		<nav
+			class="navbar navbar-expand-lg navbar-dark bg-dark navbar-fixed-top">
+			<div>
+				<div class="navbar-header">
+					<a class="navbar-brand" href="${contextRoot}/home"><u>Home</u></a>
+				</div>
+			</div>
+		</nav>
+		<div class="content">
+			<div class="container">
+				<div class="row">
+					<div class="col-xs-12">
+						<div class="jumbotron">
+							<h1>${errorTitle}</h1>
+							<hr />
+							<blockquote style="word-wrap:break-word">${errorDescription}</blockquote>
+						</div>
 
-	<!-- When User Click on Home ,Page Content -->
-	<c:if test="${userClickHome == true}">
-		<%@include file="home.jsp"%>
-	</c:if>
-
-	<!-- When User Click on About ,Page Content -->
-	<c:if test="${userClickAbout == true}">
-		<%@include file="about.jsp"%>
-	</c:if>
-
-	<!-- When User Click on Contact ,Page Content -->
-	<c:if test="${userClickContact == true}">
-		<%@include file="contact.jsp"%>
-	</c:if>
-	
-	<!-- When User Click on Contact ,Page Content -->
-	<c:if test="${userClickAllProducts == true or userClickCategoryProducts == true}">
-		<%@include file="listProducts.jsp"%>
-	</c:if>
-	
-	<!-- When User Click on,show product -->
-	<c:if test="${userClickShowProduct == true}">
-		<%@include file="singleProduct.jsp"%>
-	</c:if>
-	
-	<!-- When User Click on,Manage product -->
-	<c:if test="${userClickManageProducts == true}">
-		<%@include file="manageProducts.jsp"%>
-	</c:if>
-	
-	
-	
-</div>
-
-
-
-<!-- Footer -->
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- Footer -->
 	<%@include file="./shared/footer.jsp"%>
 	<!-- Bootstrap core JavaScript -->
 	<script src="${js}/jquery.js"></script>
-	
-	
-	
+
+
+
 	<script src="${js}/bootstrap.bundle.min.js"></script>
-	
+
 	<!-- data tables-->
-	<script src="${js}/jquery.dataTables.min.js"></script> 
-	
-	
-	<!-- bootbox-->
-	<script src="${js}/bootbox.min.js"></script> 
-	
-	
-	
+	<script src="${js}/jquery.dataTables.min.js"></script>
+
 	<!-- self coded javascript -->
 	<script src="${js}/myapp.js"></script>
-	
+
 	</div>
 
 </body>

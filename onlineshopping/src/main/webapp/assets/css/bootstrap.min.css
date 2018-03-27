@@ -4623,6 +4623,7 @@ select[multiple].input-group-sm>.form-control, select[multiple].input-group-sm>.
 
 .navbar-fixed-bottom, .navbar-fixed-top {
 	position: fixed;
+	
 	right: 0;
 	left: 0;
 	z-index: 1030
@@ -4633,11 +4634,19 @@ select[multiple].input-group-sm>.form-control, select[multiple].input-group-sm>.
 		border-radius: 0
 	}
 }
+.bg-dark {
+	background-color: #343a40 !important
+}
 
+a.bg-dark:focus, a.bg-dark:hover, button.bg-dark:focus, button.bg-dark:hover
+	{
+	background-color: #1d2124 !important
+}
 .navbar-fixed-top {
 	top: 0;
 	border-width: 0 0 1px
 }
+
 
 .navbar-fixed-bottom {
 	bottom: 0;
