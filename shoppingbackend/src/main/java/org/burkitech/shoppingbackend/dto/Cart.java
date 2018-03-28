@@ -14,6 +14,7 @@ public class Cart {
 	@Column(name = "cart_id")
 	private int id;
 	/*--------*/
+	// Relation of one to one
 	@OneToOne
 	@JoinColumn(name = "user_detail_id")
 	private User user;
