@@ -24,7 +24,7 @@ public class HibernateConfig {
 	private final static String DATABASE_DIALECT = "org.hibernate.dialect.Oracle10gDialect";
 
 	// Data Source bean will be available
-	@Bean
+	@Bean("dataSource")
 	public DataSource getDataSource() {
 		// Providing Database connection Information
 		BasicDataSource dataSource = new BasicDataSource();
