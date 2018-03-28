@@ -23,7 +23,7 @@ public class HibernateConfig {
 	private final static String DATABASE_PASSWORD = "oracle";
 	private final static String DATABASE_DIALECT = "org.hibernate.dialect.Oracle10gDialect";
 
-	// Data Source bean will be available
+	// Data Source bean will be available 
 	@Bean("dataSource")
 	public DataSource getDataSource() {
 		// Providing Database connection Information
