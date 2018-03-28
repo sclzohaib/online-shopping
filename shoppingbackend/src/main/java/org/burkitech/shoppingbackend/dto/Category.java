@@ -17,14 +17,10 @@ public class Category {
 	@Column(name = "category_id")
 	// @GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-
 	private String name;
-
 	private String description;
-
 	@Column(name = "IMAGE_URL")
 	private String imageURL;
-
 	@Column(name = "IS_ACTIVE")
 	private char active = 'Y';
 

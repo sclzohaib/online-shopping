@@ -1,7 +1,6 @@
 <%@taglib prefix="sf" uri="http://www.springframework.org/tags/form"%>
 <div class="container">
 	<div class="row">
-
 		<c:if test="${not empty message}">
 			<div class=col-xs-12>
 				<div class="alert alert-success alert-dismissible">
@@ -9,19 +8,16 @@
 					${message}
 				</div>
 		</c:if>
-
 		<div class="col-md-offset-2 col-md-8">
 			<div class="panel panel-primary">
 				<div class="panel-heading">
 					<h4>Product Management</h4>
 				</div>
-
 				<div class="panel-body">
 					<!--Form Elements-->
 					<sf:form class="form-horizontal" modelAttribute="product"
 						action="${contextRoot}/manage/products" METHOD="POST"
 						enctype="multipart/form-data">
-
 						<div class="form-group">
 							<label class="control-label col-md-4" for="name">Enter
 								Product Name: </label>
@@ -63,7 +59,6 @@
 									placeholder="Quantity Available" class="form-control" />
 							</div>
 						</div>
-
 						<div class="form-group">
 							<label class="control-label col-md-4">Select Image:</label>
 							<div class="col-md-8">
@@ -71,15 +66,21 @@
 								<sf:errors path="file" cssClass="help-block" element="em" />
 							</div>
 						</div>
-
 						<div class="form-group">
 							<label class="control-label col-md-4" for="categoryId">Select
 								Category:</label>
 							<div class="col-md-8">
 								<sf:select class="form-control" id="categoryId"
 									path="categoryId" items="${categories}" itemLabel="name"
-									itemValue="id">
-								</sf:select>
+									itemValue="id" />
+								<c:if test="${product.id==0}">
+									<div class="text-right">
+										<br />
+										<button type="button" data-toggle="modal"
+											data-target="#myCategoryModal" class="btn btn-warning">Add
+											Category</button>
+									</div>
+								</c:if>
 							</div>
 						</div>
 						<div class="form-group">
@@ -92,10 +93,8 @@
 								<sf:hidden path="active" />
 								<sf:hidden path="purchases" />
 								<sf:hidden path="views" />
-
 							</div>
 						</div>
-
 					</sf:form>
 				</div>
 			</div>
@@ -112,11 +111,9 @@
 
 		<div class="col-xs-12">
 			<div style="overflow: auto">
-
 				<!-- products table for Admin -->
 				<table id="adminProductsTable"
 					class="table table-striped table-bordered">
-
 					<thead>
 						<tr>
 							<th>Id</th>
@@ -128,57 +125,6 @@
 							<th>Edit</th>
 						</tr>
 					</thead>
-
-					<tbody>
-						<tr>
-							<td>5</td>
-							<td><img class="adminDataTableImg"
-								src="${contextRoot}/resources/images/PRD584A812A47.jpg"
-								alt="Motorolla Turbo" /></td>
-							<td>Motorolla Turbo</td>
-							<td>10</td>
-							<td>Rs. 10000.00/-</td>
-							<td>
-								<!-- toggle Switch--> 
-								<label class="switch"> 
-								<input type="checkbox" checked="checked" value="5"/>
-									<div class="slider"></div>
-							</label>
-							</td>
-							<td><a href="${contextRoot}/manage/4/product"
-								class="btn btn-warning"> <span
-	 								class="glyphicon glyphicon-pencil"></span>
-							</a></td>
-						</tr>
-
-						<tr>
-
-							<td>5</td>
-							<td><img class="adminDataTableImg"
-								src="${contextRoot}/resources/images/PRD584A812A47.jpg"
-								alt="Motorolla Turbo" /></td>
-							<td>Motorolla Turbo</td>
-							<td>10</td>
-							<td>Rs. 10000.00/-</td>
-							<td>
-								<!-- toggle Switch--> 
-								<label class="switch"> 
-								<input type="checkbox" checked="checked" />
-									<div class="slider">
-									
-									</div>
-							</label>
-							</td>
-							<td><a href="${contextRoot}/manage/4/product"
-								class="btn btn-warning"> <span
-									class="glyphicon glyphicon-pencil"></span>
-							</a></td>
-
-						</tr>
-
-
-					</tbody>
-
 					<tfoot>
 						<tr>
 							<th>Id</th>
@@ -192,6 +138,45 @@
 					</tfoot>
 				</table>
 			</div>
-
 		</div>
 	</div>
+	<div class="modal fade" id="myCategoryModal" role="dialog">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<!-- Modal header -->
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">
+						<span>&times;</span>
+					</button>
+					<h4 class="modal-title">Add New Category</h4>
+				</div>
+				<div class="modal-body">
+					<!--Category Form -->
+					<sf:form modelAttribute="category" id="categoryForm"
+						action="${contextRoot}/manage/category" method="POST"
+						class="form-horizontal">
+						<div class="form-group">
+							<label for="category_name" class="control-label col-md-4">Category
+								Name</label>
+							<div class="col-md-8">
+								<sf:input type="text" path="name" id="category_name" class="form-control" />
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="category_description" class="control-label col-md-4">Category
+								Description</label>
+							<div class="col-md-8">
+								<sf:textarea type="text" path="description" rows="5" id="category_description" class="form-control" />
+							</div>
+						</div>
+						<div class="form-group">
+							<div class="col-md-offset-4 col-md-8">
+								<input type="submit" value="Add Category" class="btn btn-primary" />
+							</div>
+						</div>
+					</sf:form>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
