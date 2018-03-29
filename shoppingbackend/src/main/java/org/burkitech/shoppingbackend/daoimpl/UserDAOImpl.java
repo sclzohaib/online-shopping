@@ -7,6 +7,7 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
 import org.burkitech.shoppingbackend.dao.UserDAO;
+import org.burkitech.shoppingbackend.dto.Address;
 import org.burkitech.shoppingbackend.dto.Cart;
 import org.burkitech.shoppingbackend.dto.User;
 import org.hibernate.SessionFactory;
@@ -14,8 +15,6 @@ import org.hibernate.criterion.Projections;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
-
-import oracle.net.jdbc.TNSAddress.Address;
 
 @Repository("userDAO")
 @Transactional
@@ -100,5 +99,16 @@ public class UserDAOImpl implements UserDAO {
 		}
 		return null;
 	}
+
+	// @Override
+	// public boolean addCart(Cart cart) {
+	// try {
+	// sessionFactory.getCurrentSession().persist(cart);
+	// return true;
+	// } catch (Exception ex) {
+	// ex.printStackTrace();
+	// return false;
+	// }
+	// }
 
 }

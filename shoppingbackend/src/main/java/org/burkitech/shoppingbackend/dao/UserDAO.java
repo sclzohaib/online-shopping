@@ -10,7 +10,8 @@ import org.burkitech.shoppingbackend.dto.User;
 public interface UserDAO {
 	// Add a User
 	boolean addUser(User user);
-	User getByEmail();
+
+	User getByEmail(String email);
 
 	// Add an address
 	boolean addAddress(Address address);
@@ -18,5 +19,9 @@ public interface UserDAO {
 	// Update a cart
 	boolean updateCart(Cart cart);
 
+	// add cart
+	// boolean addCart(Cart cart);
+
 	int getMaxId();
+
 }
