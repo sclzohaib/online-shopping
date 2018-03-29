@@ -3,12 +3,13 @@ package org.burkitech.shoppingbackend.test;
 import static org.junit.Assert.assertEquals;
 
 import org.burkitech.shoppingbackend.dao.UserDAO;
-import org.burkitech.shoppingbackend.dto.Address;
 import org.burkitech.shoppingbackend.dto.Cart;
 import org.burkitech.shoppingbackend.dto.User;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+
+
 
 public class UserTestCase {
 	private static AnnotationConfigApplicationContext context;
