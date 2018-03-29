@@ -129,8 +129,8 @@ public class UserTestCase {
 
 		// get the cart of the user
 		cart = user.getCart();
-		cart.setGrandTotal(222);
-		cart.setCartLines(2);
+		cart.setGrandTotal(333);
+		cart.setCartLines(3);
 		assertEquals("Failed to Update cart!", true, userDAO.updateCart(cart));
 	}
 
