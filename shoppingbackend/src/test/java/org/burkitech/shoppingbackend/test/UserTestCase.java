@@ -27,64 +27,65 @@ public class UserTestCase {
 		userDAO = (UserDAO) context.getBean("userDAO");
 	}
 
-//	@Test
-//	public void testAdd() {
-//		user = new User();
-//		user.setFirstName("Mohammad");
-//		user.setLastName("Zohaib");
-//		user.setEmail("zohaib2@gmail.com");
-//		user.setContactNumber("123456789");
-//		user.setRole("USER");
-//		user.setPassword("123456");
-//
-//		// Add the user
-//		assertEquals("Failed to add user!", true, userDAO.addUser(user));
-//		int mId = userDAO.getMaxId();
-//		address = new Address();
-//		address.setAddressLineOne("A/124, Tariq Road");
-//		address.setAddressLineTwo("Near Noorani Kabab");
-//		address.setCity("Karachi");
-//		address.setState("Sindh");
-//		address.setCountry("Pakistan");
-//		address.setPostalCode("74505");
-//		address.setBilling('Y');
-//
-//		// Link the user with the address //
-//		System.out.println("User id" + userDAO.getMaxId());
-//		address.setUserId(mId);
-//
-//		// add the address
-//		assertEquals("Failed to add address!", true, userDAO.addAddress(address));
-//
-//		if (user.getRole().equals("USER")) {
-//			// create a cart for this user
-//			cart = new Cart();
-//			cart.setCartLines(0);
-//			user.setId(mId);
-//			cart.setUser(user);
-//			System.out.println("ahjahjahah" + cart);
-//
-//			// add the cart
-//			assertEquals("Failed to add cart!", true, userDAO.addCart(cart));
-//
-//			// add a shipping address for this user
-//			address = new Address();
-//			address.setAddressLineOne("A/124, Tariq Road");
-//			address.setAddressLineTwo("Near Noorani Kabab");
-//			address.setCity("Karachi");
-//			address.setState("Sindh");
-//			address.setCountry("Pakistan");
-//			address.setPostalCode("74505");
-//			// set shipping to active
-//			address.setShipping('Y');
-//
-//			// link it with the user
-//			address.setUserId(mId);
-//
-//			// add the shipping address
-//			assertEquals("Failed to add shipping address!", true, userDAO.addAddress(address));
-//		}
-//	}
+	// @Test
+	// public void testAdd() {
+	// user = new User();
+	// user.setFirstName("Mohammad");
+	// user.setLastName("Zohaib");
+	// user.setEmail("zohaib2@gmail.com");
+	// user.setContactNumber("123456789");
+	// user.setRole("USER");
+	// user.setPassword("123456");
+	//
+	// // Add the user
+	// assertEquals("Failed to add user!", true, userDAO.addUser(user));
+	// int mId = userDAO.getMaxId();
+	// address = new Address();
+	// address.setAddressLineOne("A/124, Tariq Road");
+	// address.setAddressLineTwo("Near Noorani Kabab");
+	// address.setCity("Karachi");
+	// address.setState("Sindh");
+	// address.setCountry("Pakistan");
+	// address.setPostalCode("74505");
+	// address.setBilling('Y');
+	//
+	// // Link the user with the address //
+	// System.out.println("User id" + userDAO.getMaxId());
+	// address.setUserId(mId);
+	//
+	// // add the address
+	// assertEquals("Failed to add address!", true, userDAO.addAddress(address));
+	//
+	// if (user.getRole().equals("USER")) {
+	// // create a cart for this user
+	// cart = new Cart();
+	// cart.setCartLines(0);
+	// user.setId(mId);
+	// cart.setUser(user);
+	// System.out.println("ahjahjahah" + cart);
+	//
+	// // add the cart
+	// assertEquals("Failed to add cart!", true, userDAO.addCart(cart));
+	//
+	// // add a shipping address for this user
+	// address = new Address();
+	// address.setAddressLineOne("A/124, Tariq Road");
+	// address.setAddressLineTwo("Near Noorani Kabab");
+	// address.setCity("Karachi");
+	// address.setState("Sindh");
+	// address.setCountry("Pakistan");
+	// address.setPostalCode("74505");
+	// // set shipping to active
+	// address.setShipping('Y');
+	//
+	// // link it with the user
+	// address.setUserId(mId);
+	//
+	// // add the shipping address
+	// assertEquals("Failed to add shipping address!", true,
+	// userDAO.addAddress(address));
+	// }
+	// }
 
 	// @Test
 	// public void testAdd() {
@@ -122,16 +123,46 @@ public class UserTestCase {
 	// }
 
 	@Test
-	public void testUpdatCart() {
+	public void testAddAddress() {
+		// we need to add an user
+		user = new User();
+		user.setFirstName("Mohammad");
+		user.setLastName("Zohaib");
+		user.setEmail("zohaib2@gmail.com");
+		user.setContactNumber("123456789");
+		user.setRole("USER");
+		user.setPassword("123456");
+		assertEquals("Failed to add user!", true, userDAO.addUser(user));
 
-		// fetch the user by its email
-		user = userDAO.getByEmail("zohaib@gmail.com");
+		// we are going to add address
+		int mId = userDAO.getMaxId();
+		address = new Address();
+		address.setAddressLineOne("A/124, Tariq Road");
+		address.setAddressLineTwo("Near Noorani Kabab");
+		address.setCity("Karachi");
+		address.setState("Sindh");
+		address.setCountry("Pakistan");
+		address.setPostalCode("74505");
+		address.setBilling('Y');
+		// attached the user to the address
+//		user.setId(153);
+//		System.out.println(user.getId());
+//		address.setUser(user);
+//		System.out.println(address.getUser().getId());
+		assertEquals("Failed to add address!", true, userDAO.addAddress(address));
 
-		// get the cart of the user
-		cart = user.getCart();
-		cart.setGrandTotal(111);
-		cart.setCartLines(3);
-		assertEquals("Failed to Update cart!", true, userDAO.updateCart(cart));
+		// we are also going to add shipping address
+		address = new Address();
+		address.setAddressLineOne("A/124, Tariq Road");
+		address.setAddressLineTwo("Near Noorani Kabab");
+		address.setCity("Karachi");
+		address.setState("Sindh");
+		address.setCountry("Pakistan");
+		address.setPostalCode("74505");
+		// set shipping to active
+		address.setShipping('Y');
+//		user.setId(153);
+		assertEquals("Failed to add shipping address!", true, userDAO.addAddress(address));
 	}
 
 }

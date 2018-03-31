@@ -62,11 +62,19 @@
 
 		<div class="content">
 			<div class="container">
-			<!-- this will be displayed if credential in not authentic -->
+			<!-- this will be displayed if credential is not authentic -->
 				<c:if test="${not empty message}">
 					<div class="row">
 						<div class="col-md-offset-3 col-md-6">
 							<div class="alert alert-danger">${message}</div>
+						</div>
+					</div>
+				</c:if>
+				<!-- this will be displayed if credential is logged out-->
+				<c:if test="${not empty logout}">
+					<div class="row">
+						<div class="col-md-offset-3 col-md-6">
+							<div class="alert alert-success">${logout}</div>
 						</div>
 					</div>
 				</c:if>

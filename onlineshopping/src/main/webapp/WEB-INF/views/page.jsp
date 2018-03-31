@@ -103,9 +103,10 @@
 	<script src="${js}/bootstrap.bundle.min.js"></script>
 	
 	<!-- data tables-->
+	<script src="${js}/jquery.dataTables.js"></script> 
+	<script src="${js}/dataTables.bootstrap.js"></script> 
+	<!-- data tables-->
 	<script src="${js}/jquery.dataTables.min.js"></script> 
-	
-	
 	<!-- bootbox-->
 	<script src="${js}/bootbox.min.js"></script> 
 	

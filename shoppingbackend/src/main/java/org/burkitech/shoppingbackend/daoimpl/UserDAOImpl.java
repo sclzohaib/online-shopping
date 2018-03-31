@@ -1,6 +1,7 @@
 package org.burkitech.shoppingbackend.daoimpl;
 
 import java.math.BigDecimal;
+import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -95,9 +96,36 @@ public class UserDAOImpl implements UserDAO {
 			return sessionFactory.getCurrentSession().createQuery(selectQuery, User.class).setParameter("email", email)
 					.getSingleResult();
 		} catch (Exception ex) {
-			ex.printStackTrace();
+			// ex.printStackTrace();
+			return null;
 		}
-		return null;
+	}
+
+	@Override
+	public Address getBillingAddress(User user) {
+		String selectQuery = "FROM Address WHERE user=:user AND billing=:billing";
+		try {
+			return sessionFactory.getCurrentSession().createQuery(selectQuery, Address.class).setParameter("user", user)
+					.setParameter("billing", 'Y').getSingleResult();
+
+		} catch (Exception ex) {
+			ex.printStackTrace();
+			return null;
+		}
+
+	}
+
+	@Override
+	public List<Address> listShippingAddress(User user) {
+		String selectQuery = "FROM Address WHERE user=:user AND shipping=:shipping";
+		try {
+			return sessionFactory.getCurrentSession().createQuery(selectQuery, Address.class).setParameter("user", user)
+					.setParameter("shipping", 'Y').getResultList();
+
+		} catch (Exception ex) {
+			ex.printStackTrace();
+			return null;
+		}
 	}
 
 	// @Override

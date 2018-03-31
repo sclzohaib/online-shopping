@@ -26,15 +26,17 @@ public class Product {
 	@NotBlank(message ="Please enter the Brand Name!")
 	private String brand;
 	@NotBlank(message ="Please enter the Description for Product!")
+	@JsonIgnore
 	private String description;
-	
 	@Column(name = "unit_Price")
 	@Min(value=1, message ="Unit price cannot be less than 1!")
 	private double unitPrice;
 	private int quantity;
 	@Column(name = "is_active")
+	@JsonIgnore
 	private char active;
 	@Column(name = "category_id")
+	@JsonIgnore
 	private int categoryId;
 //	@Column(name = "supplier_id")
 //	private int supplierId;

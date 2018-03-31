@@ -4,11 +4,10 @@ import java.io.Serializable;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
-
-import org.hibernate.validator.constraints.NotBlank;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.MapsId;
 
 @Entity
 public class Address implements Serializable {
@@ -17,6 +16,19 @@ public class Address implements Serializable {
 	@Id
 	@Column(name = "ADDRESS_ID")
 	private int id;
+	// @MapsId("address_id")
+	@ManyToOne
+	// @JoinColumn(name = "address_id")
+	private User user;
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+
 	@Column(name = "ADDRESS_LINE_ONE")
 	private String addressLineOne;
 	@Column(name = "ADDRESS_LINE_TWO")

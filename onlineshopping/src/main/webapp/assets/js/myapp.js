@@ -28,38 +28,29 @@ $(function() {
 		break;
 
 	}
-
 	// tackle the csrf token
-	var token =$('meta[name="_csrf"]').attr('content');
-	var header =$('meta[name="_csrf_header"]').attr('content');
+	var token = $('meta[name="_csrf"]').attr('content');
+	var header = $('meta[name="_csrf_header"]').attr('content');
 
-	if(token.length >0 && header.length >0){
-	//set token header for ajax request
-	$(document).ajaxSend(function(e,xhr,options){
-	zhr.setRequestHeader(header,token);
-	});
+	if (token.length > 0 && header.length > 0) {
+		// set token header for ajax request
+		$(document).ajaxSend(function(e, xhr, options) {
+			xhr.setRequestHeader(header, token);
+		});
 	}
-	
 	// code for jquery datatable
-
+	// var products = [
+	// [ '1', 'ABC' ],
+	// [ '2', 'ABC' ],
+	// [ '3', 'ABC' ],
+	// [ '4', 'ABC' ],
+	// [ '5', 'ABC' ],
+	// [ '6', 'ABC' ]
+	// ];
 	var $table = $('#productListTable');
 
-	// execute the below code only where we have this table
-	$(document).ready(function() {
-		$('#productListTable').DataTable();
-	});
 	if ($table.length) {
-		// console.log('Inside the table');
-		// create a dataset
-		// var products = [
-		// [ '1', 'ABC' ],
-		// [ '2', 'ABC' ],
-		// [ '3', 'ABC' ],
-		// [ '4', 'ABC' ],
-		// [ '5', 'ABC' ],
-		// [ '6', 'ABC' ]
-		// ];
-
+		console.log('Inside the table');
 		var jsonUrl = '';
 		if (window.categoryId == '') {
 			jsonUrl = window.contextRoot + '/json/data/all/products';
@@ -69,14 +60,15 @@ $(function() {
 					+ window.categoryId + '/products';
 		}
 
-		// table.DataTable(
+		// $table.DataTable(
 		// {
 		// lengthMenu:[[3,5,10,-1],['3 Records','5 Records','10
 		// Records','ALL']],
 		// pageLength: 5,
 		// data:products
+		// });
 		// }
-		// );
+
 		$table
 				.DataTable({
 					lengthMenu : [ [ 3, 5, 10, -1 ],
@@ -96,27 +88,20 @@ $(function() {
 									return '<img src="' + window.contextRoot
 											+ '/resources/images/' + data
 											+ '.jpg" class = "dataTableImg"/>'
-
 								}
-
 							},
-
 							{
 								data : 'name'
 							},
-
 							{
 								data : 'brand'
 							},
-
 							{
 								data : 'unitPrice',
 								mRender : function(data, type, row) {
 									return 'Rs. ' + data
-
 								}
 							},
-
 							{
 								data : 'quantity',
 								mRender : function(data, type, row) {
@@ -126,7 +111,6 @@ $(function() {
 									return data;
 								}
 							},
-
 							{
 								data : 'id',
 								bSortable : false,
@@ -138,25 +122,37 @@ $(function() {
 											+ '/show/'
 											+ data
 											+ '/product" class="btn btn-primary"><span class="glyphicon glyphicon-eye-open"></span></a> &#160;';
-									if (row.quantity < 1) {
-										str += '<a href="javascrip:void(0)" class="btn btn-success disabled"><span class="glyphicon glyphicon-shopping-cart"></span></a>';
-									} else {
+									if (userRole == 'ADMIN') {
 										str += '<a href="'
 												+ window.contextRoot
-												+ '/cart/add/'
+												+ '/manage/'
 												+ data
-												+ '/product" class="btn btn-success"><span class="glyphicon glyphicon-shopping-cart"></span></a>';
+												+ '/product" class="btn btn-warning"><span class="glyphicon glyphicon-pencil"></span></a>';
+									}
+
+									else {
+										if (row.quantity < 1) {
+											str += '<a href="javascrip:void(0)" class="btn btn-success disabled"><span class="glyphicon glyphicon-shopping-cart"></span></a>';
+										} else {
+											str += '<a href="'
+													+ window.contextRoot
+													+ '/cart/add/'
+													+ data
+													+ '/product" class="btn btn-success"><span class="glyphicon glyphicon-shopping-cart"></span></a>';
+										}
 									}
 
 									return str;
-
 								}
-
-							}
-
-					]
+							} ]
 				});
 	}
+
+	// execute the below code only where we have this table
+	$(document).ready(function() {
+		$('#productListTable').DataTable();
+	});
+
 	// dismissing alert after 3 sec
 	var $alert = $('.alert');
 	if ($alert.length) {
@@ -165,7 +161,6 @@ $(function() {
 
 		}, 3000)
 	}
-
 	// ------------------------------------------------------------------
 	// code for jquery datatable
 	var $adminProdcutsTable = $('#adminProductsTable');
@@ -234,7 +229,6 @@ $(function() {
 									str += '<span class="slider round"></span></label>';
 									return str;
 								}
-
 							},
 							{
 								data : 'id',
@@ -329,33 +323,32 @@ $(function() {
 	// validation code for userform
 	var $loginForm = $('#loginForm');
 	if ($loginForm.length) {
-		$loginForm
-				.validate({
-					rules : {
-						username : {
-							required : true,
-							email:true
-						},
-						password : {
-							required : true
-						}
-					},
-					messages : {
-						username : {
-							required : 'Please enter username!',
-							email : 'Please enter valid email address!'
-						},
-						password : {
-							required : 'Please enter password!'
-						}
-					},
-					errorElement : 'em',
-					errorPlacement : function(error, element) {
-						// add the class of help-block
-						error.addClass('help-block');
-						// add the error element after the input element
-						error.insertAfter(element);
-					}
-				});
+		$loginForm.validate({
+			rules : {
+				username : {
+					required : true,
+					email : true
+				},
+				password : {
+					required : true
+				}
+			},
+			messages : {
+				username : {
+					required : 'Please enter username!',
+					email : 'Please enter valid email address!'
+				},
+				password : {
+					required : 'Please enter password!'
+				}
+			},
+			errorElement : 'em',
+			errorPlacement : function(error, element) {
+				// add the class of help-block
+				error.addClass('help-block');
+				// add the error element after the input element
+				error.insertAfter(element);
+			}
+		});
 	}
 });
