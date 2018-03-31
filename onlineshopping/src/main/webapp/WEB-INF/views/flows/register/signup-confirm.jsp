@@ -72,7 +72,7 @@
 
 			<div class="text-center">
 
-				<a href="${flowExecutionUrl}&_eventId_submit"
+				<a href="${flowExecutionUrl}&_eventId_success"
 					class="btn btn-lg btn-primary">Confirm</a>
 
 			</div>
