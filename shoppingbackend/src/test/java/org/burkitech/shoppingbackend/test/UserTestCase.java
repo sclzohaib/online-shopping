@@ -135,7 +135,7 @@ public class UserTestCase {
 		assertEquals("Failed to add user!", true, userDAO.addUser(user));
 
 		// we are going to add address
-		int mId = userDAO.getMaxId();
+		// int mId = userDAO.getMaxId();
 		address = new Address();
 		address.setAddressLineOne("A/124, Tariq Road");
 		address.setAddressLineTwo("Near Noorani Kabab");
@@ -145,10 +145,12 @@ public class UserTestCase {
 		address.setPostalCode("74505");
 		address.setBilling('Y');
 		// attached the user to the address
-//		user.setId(153);
-//		System.out.println(user.getId());
-//		address.setUser(user);
-//		System.out.println(address.getUser().getId());
+		// user.setId(152);
+		System.out.println(user.getId());
+		address.setUser(user);
+		System.out.println(address.getUser().getId());
+		address.setUserId(152);
+		System.out.println(address.getUserId());
 		assertEquals("Failed to add address!", true, userDAO.addAddress(address));
 
 		// we are also going to add shipping address
@@ -161,7 +163,8 @@ public class UserTestCase {
 		address.setPostalCode("74505");
 		// set shipping to active
 		address.setShipping('Y');
-//		user.setId(153);
+		// user.setId(153);
+		address.setUserId(152);
 		assertEquals("Failed to add shipping address!", true, userDAO.addAddress(address));
 	}
 

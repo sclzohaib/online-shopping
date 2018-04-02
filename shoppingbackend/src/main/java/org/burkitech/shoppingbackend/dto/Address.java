@@ -17,8 +17,10 @@ public class Address implements Serializable {
 	@Column(name = "ADDRESS_ID")
 	private int id;
 	// @MapsId("address_id")
-	@ManyToOne
+
 	// @JoinColumn(name = "address_id")
+	@ManyToOne
+	@MapsId("user_detail_id")
 	private User user;
 
 	public User getUser() {
