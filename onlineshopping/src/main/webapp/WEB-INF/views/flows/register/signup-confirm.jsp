@@ -11,8 +11,8 @@
 				</div>
 
 				<div class="panel-body">
-					<div class="text-center">			
-					
+					<div class="text-center">
+
 						<h3>
 							Name : <strong>${registerModel.user.firstName}
 								${registerModel.user.lastName}</strong>
@@ -47,7 +47,7 @@
 				</div>
 
 				<div class="panel-body">
-							
+
 					<div class="text-center">
 						<p>${registerModel.billing.addressLineOne},</p>
 						<p>${registerModel.billing.addressLineTwo},</p>
@@ -74,7 +74,8 @@
 
 			<div class="text-center">
 
-				<a href="${flowExecutionUrl}&_eventId_submit" class="btn btn-lg btn-primary">Confirm</a>
+				<a href="${flowExecutionUrl}&_eventId_submit"
+					class="btn btn-lg btn-primary">Confirm</a>
 
 			</div>
 
@@ -82,4 +83,4 @@
 
 	</div>
 
-<%@include file="../shared/flows-footer.jsp"%>
+	<%@include file="../shared/flows-footer.jsp"%>

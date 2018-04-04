@@ -12,8 +12,8 @@ import org.springframework.stereotype.Component;
 public class RegisterHandler {
 
 	private static final char Boolean = 0;
-	@Autowired
 
+	@Autowired
 	private UserDAO userDAO;
 
 	public RegisterModel init() {
@@ -30,27 +30,24 @@ public class RegisterHandler {
 		registerModel.setBilling(billing);
 	}
 
-	public String saveAll(RegisterModel model) {
+	public String saveAll(RegisterModel registerModel) {
 		String transitionValue = "success";
 		// fetch the user
 		System.out.println("saveAll");
-		User user = model.getUser();
+		User user = registerModel.getUser();
 		if (user.getRole().equals("USER")) {
 			Cart cart = new Cart();
-
 			// cart.getUser().setId(152);
-			user.setId((userDAO.getMaxId()) + 1);
 			cart.setUser(user);
-
 			user.setCart(cart);
+			user.setId((userDAO.getMaxId()) + 1);
 		}
-
 		// SAVE the user
 		System.out.println("SAVE the user");
 		userDAO.addUser(user);
 		// get the address
 		System.out.println("get address");
-		Address billing = model.getBilling();
+		Address billing = registerModel.getBilling();
 		billing.setUserId(user.getId());
 		billing.setBilling('Y');
 		// save the address

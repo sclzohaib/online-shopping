@@ -30,6 +30,7 @@
 				expression="registerHandler.addBilling(flowScope.registerModel, billing)"></evaluate>
 		</on-exit>
 	</view-state>
+	
 	<view-state id="confirm" view="flows/register/signup-confirm"
 		model="flowScope.registerModel">
 		<transition on="personal" to="personal" />
@@ -38,12 +39,11 @@
 	</view-state>
 
 	<action-state id="submit">
-		<evaluate expression="registerHandler.saveAll(flowScope.registerModel)" />
+		<evaluate expression="registerHandler.saveAll(flowScope.registerModel)"></evaluate>
 		<transition on="success" to="success" />
 	</action-state>
 
 	<!--end state -->
-
 	<end-state id="home" view="externalRedirect:contextRelative:/" />
 	<end-state id="success" view="flows/register/signup-success"></end-state>
 	<!--Global Transition -->
