@@ -41,9 +41,17 @@ public class PageController {
 
 	}
 
+//	@RequestMapping(value = "/book-info")
+//	public ModelAndView bookInfo() {
+//		System.out.println("asdssad");
+//		ModelAndView mv = new ModelAndView("page");
+//		mv.addObject("title", "Book Information");
+//		mv.addObject("userClickBookInfo", true);
+//		return mv;
+//	}
+
 	@RequestMapping(value = "/about")
 	public ModelAndView about() {
-
 		ModelAndView mv = new ModelAndView("page");
 		mv.addObject("title", "About Us");
 		mv.addObject("userClickAbout", true);
@@ -86,20 +94,16 @@ public class PageController {
 
 	@RequestMapping(value = "/show/{id}/product")
 	public ModelAndView showSingleProduct(@PathVariable int id) throws ProductNotFoundException {
-
 		ModelAndView mv = new ModelAndView("page");
 		Product product = productDAO.get(id);
 
 		if (product == null)
 			throw new ProductNotFoundException();
-
 		// update the view count
 		product.setViews(product.getViews() + 1);
 		productDAO.update(product);
-
 		mv.addObject("title", product.getName());
 		mv.addObject("product", product);
-
 		mv.addObject("userClickShowProduct", true);
 
 		return mv;
@@ -140,14 +144,12 @@ public class PageController {
 		}
 		return "redirect:login?logout";
 	}
+
 	@RequestMapping(value = "/register")
 	public ModelAndView register() {
-
-		ModelAndView mv = new ModelAndView("page");
-		mv.addObject("title", "About Us");
-		mv.addObject("userClickAbout", true);
+		ModelAndView mv = new ModelAndView("/flows/register/flows-header");
+		mv.addObject("title", "Registeration");
 		return mv;
-
 	}
 
 }

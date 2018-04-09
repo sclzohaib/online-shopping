@@ -7,7 +7,6 @@ import org.burkitech.shoppingbackend.dto.Cart;
 import org.burkitech.shoppingbackend.dto.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-
 @Component
 public class RegisterHandler {
 
@@ -52,7 +51,7 @@ public class RegisterHandler {
 		billing.setBilling('Y');
 		// save the address
 		System.out.println("add address");
-		userDAO.addAddress(billing);
+		userDAO.addAddress(billing);	
 		return transitionValue;
 	}
 }

@@ -79,6 +79,7 @@ public class CartLineDAOImpl implements CartLineDAO {
 			return null;
 		}
 	}
+	//related to cart table
 	@Override
 	public boolean updateCart(Cart cart) {
 		try {

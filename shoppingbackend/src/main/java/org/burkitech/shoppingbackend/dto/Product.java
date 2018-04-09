@@ -14,22 +14,22 @@ import org.springframework.web.multipart.MultipartFile;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
-//@Table(name = "CATEGORY")
+// @Table(name = "CATEGORY")
 public class Product {
 	@Id
 	@Column(name = "product_id")
 	// @GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
 	private String code;
-	@NotBlank(message ="Please enter the Product Name!")
+	@NotBlank(message = "Please enter the Product Name!")
 	private String name;
-	@NotBlank(message ="Please enter the Brand Name!")
+	@NotBlank(message = "Please enter the Brand Name!")
 	private String brand;
-	@NotBlank(message ="Please enter the Description for Product!")
+	@NotBlank(message = "Please enter the Description for Product!")
 	@JsonIgnore
 	private String description;
 	@Column(name = "unit_Price")
-	@Min(value=1, message ="Unit price cannot be less than 1!")
+	@Min(value = 1, message = "Unit price cannot be less than 1!")
 	private double unitPrice;
 	private int quantity;
 	@Column(name = "is_active")
@@ -38,13 +38,13 @@ public class Product {
 	@Column(name = "category_id")
 	@JsonIgnore
 	private int categoryId;
-//	@Column(name = "supplier_id")
-//	private int supplierId;
+	// @Column(name = "supplier_id")
+	// private int supplierId;
 	@JsonIgnore
 	private int purchases;
 	@JsonIgnore
 	private int views;
-	
+
 	@Transient
 	private MultipartFile file;
 
@@ -132,13 +132,13 @@ public class Product {
 		this.categoryId = categoryId;
 	}
 
-//	public int getSupplierId() {
-//		return supplierId;
-//	}
-//
-//	public void setSupplierId(int supplierId) {
-//		this.supplierId = supplierId;
-//	}
+	// public int getSupplierId() {
+	// return supplierId;
+	// }
+	//
+	// public void setSupplierId(int supplierId) {
+	// this.supplierId = supplierId;
+	// }
 
 	public int getPurchases() {
 		return purchases;
@@ -163,5 +163,4 @@ public class Product {
 				+ ", categoryId=" + categoryId + ", purchases=" + purchases + ", views=" + views + "]";
 	}
 
-	
 }

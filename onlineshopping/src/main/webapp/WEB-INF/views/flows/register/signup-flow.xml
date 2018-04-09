@@ -30,14 +30,14 @@
 				expression="registerHandler.addBilling(flowScope.registerModel, billing)"></evaluate>
 		</on-exit>
 	</view-state>
-	
+
 	<view-state id="confirm" view="flows/register/signup-confirm"
 		model="flowScope.registerModel">
 		<transition on="personal" to="personal" />
 		<transition on="billing" to="billing" />
 		<transition on="submit" to="submit" />
 	</view-state>
-
+	
 	<action-state id="submit">
 		<evaluate expression="registerHandler.saveAll(flowScope.registerModel)"></evaluate>
 		<transition on="success" to="success" />
